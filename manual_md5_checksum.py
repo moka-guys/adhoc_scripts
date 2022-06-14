@@ -20,8 +20,8 @@ def arg_parse():
     """
     parser = argparse.ArgumentParser()
     parser.description = '''Use this script to compare two compies of the same sequencing run via an md5 checksum. Script will check Interop, Thumbnail_Images and Data directories'''
-    parser.add_argument('-p', '--path1', help="Full path to runfolder 1")
-    parser.add_argument('-c', '--path2',  help="Full path to runfolder 2")                  
+    parser.add_argument('-p1', '--path1', help="Full path to runfolder 1")
+    parser.add_argument('-p2', '--path2',  help="Full path to runfolder 2")                  
     return parser.parse_args()
 
 # Script ===========================================
@@ -34,12 +34,7 @@ directories_to_check = ["InterOp","Thumbnail_Images","Data"]
 for directory in directories_to_check:
     
     print("Working on the " + directory + " directory.")
-    
-    # Make the path to directory 1
-    #path_to_runfolder_1 = args.path1+directory
-    # Make the path to directory 2
-    #path_to_runfolder_2 = args.path2+directory
-    
+      
     # Run dirshash in md5 mode
     check_runfolder_1_directory_hash = dirhash(args.path1+directory, "md5")
     check_runfolder_2_directory_hash = dirhash(args.path2+directory, "md5")
@@ -48,7 +43,13 @@ for directory in directories_to_check:
     print("Runfolder 2 " + args.path2 +  " md5 checksum for the directory " + directory + " = " + check_runfolder_2_directory_hash)    
 
     # Compare hashes     
-    if check_runfolder_1_directory_hash == check_runfolder_1_directory_hash:
-        print ("MD5 checksums match for "+ directory + "directory")
+    if check_runfolder_1_directory_hash == check_runfolder_2_directory_hash:
+        print ("MD5 checksums match for "+ directory + " directory")
     else: 
-        print ("MD5 checksums do not match for "+ directory + "directory")
+        print ("MD5 checksums do not match for "+ directory + " directory")
+
+
+ # Make the path to directory 1
+    #path_to_runfolder_1 = args.path1+directory
+    # Make the path to directory 2
+    #path_to_runfolder_2 = args.path2+directory
