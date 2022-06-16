@@ -2,7 +2,7 @@ from checksumdir import dirhash
 import argparse 
 
 ## What this script does ##
-# This script will determine the md5 check sum of two run folders for the same sequencing run 
+# This script will determine the md5 checksum of two run folders for the same sequencing run 
 # It will check the "InterOp","Thumbnail_Images" and  "Data" directories.
 
 ## How to use it ##
@@ -47,9 +47,3 @@ for directory in directories_to_check:
         print ("MD5 checksums match for "+ directory + " directory")
     else: 
         print ("MD5 checksums do not match for "+ directory + " directory")
-
-
- # Make the path to directory 1
-    #path_to_runfolder_1 = args.path1+directory
-    # Make the path to directory 2
-    #path_to_runfolder_2 = args.path2+directory
