@@ -13,11 +13,11 @@ If the SQL query is not generated (e.g. when an error has occured), this script 
 pipelineversion and NGSpanelID can be found in the [automated scripts config file](https://github.com/moka-guys/automate_demultiplex/blob/master/automate_demultiplex_config.py)
 
 #### make_SQL_statements.py --help:
-'-r', '--runtype', help="Use: custompanels, ONC (includes ONC/Swift, ADX and TSO500), WES or SNP"
-'-f', '--file',  help="path to the txt file with samples in"
-'-p', '--pipelineversion', help="In number format e.g 4854"
+'-r', '--runtype', help="Use: custompanels, ONC (includes ONC/Swift, ADX and TSO500), WES or SNP" <br>
+'-f', '--file',  help="path to the txt file with samples in" <br>
+'-p', '--pipelineversion', help="In number format e.g 4854" <br>
 '-i', '--runid', help="e.g 220218_NB551068_0449_AHGML5AFX3 "       
-'-n', '--ngspanelid', help="e.g 4396"
+'-n', '--ngspanelid', help="e.g 4396" 
 
 ## upload_runfolders.py
 Script to generate commands to upload runfolders and samplesheets to DNA Nexus
@@ -28,5 +28,21 @@ If errors with the automated scripts mean runfolders have not been uploaded to D
 A text file (tab separated) with a list of runfolder names and DNA Nexus project names
 
 #### Outputs:
-- Text file with list of commands to run the backup_runfolder.py script
+- Text file with list of commands to run the backup_runfolder.py script 
 - Text file with list of commands to run the DNA Nexus upload agent to upload the samplesheet to the workstation. Note: "/usr/local/src/mokaguys/.dnanexus_auth_token" will need to be replaced with the authentication token prior to running.
+
+## manual_md5_checksum.py
+Script to be run on the workstation to check the md5 check sum of three folders, across two copies of the same sequencing run 
+This  is normally performed by the automated intergirty scripts on the sequencer (https://github.com/moka-guys/integrity_checking)
+This adhoc script can be used if permissions errors on the sequencer mean python cannot be run and this cannot be resolved via the fix in KB article 'Failing Integrity checks on sequencers' (KB0010053)
+
+To be run "python manual_md5_checksum.py -p /path/to/folder1/ -c /path/to/folder2/ > run_id_output.txt"
+
+### Required inputs: 
+- Full path to two folders 
+
+### manual_md5_checksum.py --help:
+'-p1', '--path1', help="Full path to runfolder 1" <br>
+'-p2', '--path2',  help="Full path to runfolder 2" <br>                  
+
+
