@@ -42,7 +42,7 @@ To be run "python manual_md5_checksum.py -p /path/to/folder1/ -c /path/to/folder
 - Full path to two folders 
 
 ### manual_md5_checksum.py --help:
-'-p1', '--path1', help="Full path to runfolder 1"
-'-p2', '--path2',  help="Full path to runfolder 2"                  
+'-p1', '--path1', help="Full path to runfolder 1" <br>
+'-p2', '--path2',  help="Full path to runfolder 2" <br>                  
 
 
