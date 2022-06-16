@@ -34,7 +34,7 @@ A text file (tab separated) with a list of runfolder names and DNA Nexus project
 ## manual_md5_checksum.py
 Script to be run on the workstation to check the md5 check sum of three folders, across two copies of the same sequencing run 
 This  is normally performed by the automated intergirty scripts on the sequencer (https://github.com/moka-guys/integrity_checking)
-This adhoc script can be used if permissions errors on the sequencer mean python cannot be run 
+This adhoc script can be used if permissions errors on the sequencer mean python cannot be run and this cannot be resolved via the fix in KB article 'Failing Integrity checks on sequencers' (KB0010053)
 
 To be run "python manual_md5_checksum.py -p /path/to/folder1/ -c /path/to/folder2/ > run_id_output.txt"
 
