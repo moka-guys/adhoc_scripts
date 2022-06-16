@@ -16,8 +16,8 @@ pipelineversion and NGSpanelID can be found in the [automated scripts config fil
 '-r', '--runtype', help="Use: custompanels, ONC (includes ONC/Swift, ADX and TSO500), WES or SNP" <br>
 '-f', '--file',  help="path to the txt file with samples in" <br>
 '-p', '--pipelineversion', help="In number format e.g 4854" <br>
-'-i', '--runid', help="e.g 220218_NB551068_0449_AHGML5AFX3 " <br>       
-'-n', '--ngspanelid', help="e.g 4396" <br>
+'-i', '--runid', help="e.g 220218_NB551068_0449_AHGML5AFX3 "       
+'-n', '--ngspanelid', help="e.g 4396" 
 
 ## upload_runfolders.py
 Script to generate commands to upload runfolders and samplesheets to DNA Nexus
