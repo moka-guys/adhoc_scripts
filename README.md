@@ -13,11 +13,11 @@ If the SQL query is not generated (e.g. when an error has occured), this script 
 pipelineversion and NGSpanelID can be found in the [automated scripts config file](https://github.com/moka-guys/automate_demultiplex/blob/master/automate_demultiplex_config.py)
 
 #### make_SQL_statements.py --help:
-'-r', '--runtype', help="Use: custompanels, ONC (includes ONC/Swift, ADX and TSO500), WES or SNP"
-'-f', '--file',  help="path to the txt file with samples in"
-'-p', '--pipelineversion', help="In number format e.g 4854"
-'-i', '--runid', help="e.g 220218_NB551068_0449_AHGML5AFX3 "       
-'-n', '--ngspanelid', help="e.g 4396"
+'-r', '--runtype', help="Use: custompanels, ONC (includes ONC/Swift, ADX and TSO500), WES or SNP" <br>
+'-f', '--file',  help="path to the txt file with samples in" <br>
+'-p', '--pipelineversion', help="In number format e.g 4854" <br>
+'-i', '--runid', help="e.g 220218_NB551068_0449_AHGML5AFX3 " <br>       
+'-n', '--ngspanelid', help="e.g 4396" <br>
 
 ## upload_runfolders.py
 Script to generate commands to upload runfolders and samplesheets to DNA Nexus
@@ -28,7 +28,7 @@ If errors with the automated scripts mean runfolders have not been uploaded to D
 A text file (tab separated) with a list of runfolder names and DNA Nexus project names
 
 #### Outputs:
-- Text file with list of commands to run the backup_runfolder.py script
+- Text file with list of commands to run the backup_runfolder.py script 
 - Text file with list of commands to run the DNA Nexus upload agent to upload the samplesheet to the workstation. Note: "/usr/local/src/mokaguys/.dnanexus_auth_token" will need to be replaced with the authentication token prior to running.
 
 ## manual_md5_checksum.py
