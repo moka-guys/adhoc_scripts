@@ -45,4 +45,12 @@ To be run "python manual_md5_checksum.py -p /path/to/folder1/ -c /path/to/folder
 '-p1', '--path1', help="Full path to runfolder 1" <br>
 '-p2', '--path2',  help="Full path to runfolder 2" <br>                  
 
+## bulk_url_downloader.html
 
+This is a static webpage that can be used to automate the download of multiple URLs.  
+
+- Save the HTML file locally and open it with the webrowser of your choice.
+- Copy & paste the URLs into the text box pictured below and click 'Download Files'
+- The file will be downloaded one by one.  If you are prompted for permission to download multiple files try adjusting the download delay in the file which is currently set at 1 second.
+
+![image](./bulkUploader.png)
