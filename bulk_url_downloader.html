@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batch File Downloader</title>
+</head>
+
+<body>
+    <textarea id="urls" placeholder="Enter the URLs, one per line" rows="10" cols="50"></textarea>
+    <br>
+    <button onclick="downloadFiles()">Download Files</button>
+    ​
+    <script>
+        function downloadFiles() {
+            const urls = document.getElementById('urls').value.split('\n');
+            urls.forEach((url, index) => {
+                // Use a timeout to space out the downloads a bit
+                setTimeout(() => {
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = '';  // This will prompt the file to be downloaded
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                }, index * 1000);  // 1 second delay between each download
+            });
+        }
+    </script>
+</body>
+
+</html>
