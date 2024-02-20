@@ -54,3 +54,11 @@ This is a static webpage that can be used to automate the download of multiple U
 - The files will be downloaded one by one.  If you are prompted for permission to download multiple files try adjusting the download delay in the HTML file which is currently set at 1 second.
 
 ![image](./bulkUploader.png)
+
+### tso_upload_helper.sh
+
+If run with the name of a TSO related project in DNA nexus as an argument, this script will partly populate the command required to upload the zip files to Qiagen:
+
+```bash tso_upload.sh 002_240216_A01229_0290_AHNL5GDMXY_TSO24006```
+
+The resulting command will be sent to std out with just the APP_ID and MOKAGUYS_AUTH_TOKEN needing to be added to each line, this can be done using find & replace.  IMPORTANT: HD200 and NTC samples (HD200 or 00000_00000 in sample name) should have their lines removed manually as these should not be uploaded.
