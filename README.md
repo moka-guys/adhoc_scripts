@@ -83,3 +83,27 @@ Shell script file within the current working directory named according to the ru
 Concordance testing using diff commands performed against pre-existing manually generated multiqc_fastqc.sh scripts in the dx_run_commands directory.
 
 Only deviation was in run 240507_A01229_0324_AH5CYWDRX5, where a manual entry mistake was identified.
+
+## panelapp_gene_query.py
+
+Generates a list of all signed-off gene/panel relations using the PanelApp API.
+
+Confidence scores:
+
+- Score 3 (lime green) - High level of evidence for this gene-disease association. Demonstrates confidence that this gene should be used for genome interpretation.
+- Score 2 (amber) - Moderate evidence for this gene-disease association. This gene should not be used for genomic interpretation.
+- Score 0 or 1 (red) - Not enough evidence for this gene-disease association. This gene should not be used for genomic interpretation.
+
+### Usage:
+```
+python3 panelapp_gene_query.py
+```
+
+### Output:
+CSV within the current working directory (```panelapp_gene_data.csv```). Data contains the following columns: gene_symbol, hgnc_id, panel_name, confidence_level and panel_id
+
+### Testing:
+Spotcheck of output CSV to ensure both:
+
+- Results and confidence scores are reflected on the live PanelApp website
+- All results pertain to signed-off panels
