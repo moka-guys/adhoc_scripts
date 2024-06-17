@@ -4,7 +4,7 @@ Guy's & St. Thomas' NHS Trust
 
 Simple script to generate CSV containing all current gene/panel relations using PanelApp API
 Includes data only from signed-off panels
-Stores gene_symbol, hgnc_id, panel[name], confidence_level
+Stores gene_symbol, hgnc_id, panel[name], confidence_level and panel_id
 
 Usage: python3 panelapp_gene_query.py
 panelapp_gene_data.csv will be saved in the current working directory
