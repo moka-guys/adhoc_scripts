@@ -63,27 +63,6 @@ If run with the name of a TSO related project in DNA nexus as an argument, this 
 
 The resulting command will be sent to std out with just the APP_ID and MOKAGUYS_AUTH_TOKEN needing to be added to each line, this can be done using find & replace.  IMPORTANT: HD200 and NTC samples (HD200 or 00000_00000 in sample name) should have their lines removed manually as these should not be uploaded.
 
-## okd_qc_commands.py
-
-Automates the generation of DNAnexus MultiQC/FastQC commands for a given OncoDeep runfolder.
-Must be ran on workstation where authkey file is present.
-
-### Usage:
-```
-python3 qcgen.py -p {dnanexus_project_id} -f {illumina_runfolder_name}
-```
-### Arguments:
--p, --project    The DNAnexus project ID for the run (i.e, project-XXXXXXXXXXX).
--f, --fastq_dir  The name of the run folder (i.e., 240521_A01229_0331_AHWGJGDRX3).
-
-### Output:
-Shell script file within the current working directory named according to the run. This can be run from any location on the genomics workstation
-
-### Testing:
-Concordance testing using diff commands performed against pre-existing manually generated multiqc_fastqc.sh scripts in the dx_run_commands directory.
-
-Only deviation was in run 240507_A01229_0324_AH5CYWDRX5, where a manual entry mistake was identified.
-
 ## panelapp_gene_query.py
 
 Generates a list of all signed-off gene/panel relations using the PanelApp API.
