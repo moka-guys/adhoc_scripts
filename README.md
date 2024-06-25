@@ -95,7 +95,7 @@ Requires use of Python 3.6+. Can use 'conda activate' where this isn't natively 
 
 ### Usage:
 ```
-python3 qcgen.py -p {dnanexus_project_id} -f {illumina_runfolder_name} -a {path/to/.authkey}
+python3 okd_qc_commands.py -p {dnanexus_project_id} -f {illumina_runfolder_name} -a {path/to/.authkey}
 ```
 ### Arguments:
 -p, --project    The DNAnexus project ID for the run (i.e, project-XXXXXXXXXXX).
