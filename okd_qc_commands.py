@@ -65,7 +65,7 @@ def read_auth_token(token_path):
 
 def generate_script(fastq_folder_name, okd_id, provided_fastq_folder_name, fastq_files, project_id, auth_token):
     '''Generate the shell script'''
-    script_filename = "{}_multiqc_fastqc.sh".format(fastq_folder_name)
+    script_filename = f"{fastq_folder_name}_multiqc_fastqc.sh"
     with open(script_filename, "w") as script_file:
         # Create and open the output shell script file
         script_file.write("depends_list=''\n\n")
@@ -76,36 +76,30 @@ def generate_script(fastq_folder_name, okd_id, provided_fastq_folder_name, fastq
 
                 # Write the FastQC command for each pair of fastq files
                 script_file.write(
-                    "jobid=$(dx run project-ByfFPz00jy1fk6PjpZ95F27J:/Apps/fastqc_v1.4.0 --priority high -y "
-                    "--name {sample_name} -ireads={provided_fastq_folder_name}:/{fastq_folder_name}_{okd_id}/Data/Intensities/BaseCalls/{r1_file} "
-                    "-ireads={provided_fastq_folder_name}:/{fastq_folder_name}_{okd_id}/Data/Intensities/BaseCalls/{r2_file} "
-                    "--dest={provided_fastq_folder_name}:/ --brief --auth-token {auth_token})\n".format(
-                        sample_name=sample_name, provided_fastq_folder_name=provided_fastq_folder_name, fastq_folder_name=fastq_folder_name, r1_file=r1_file, r2_file=r2_file, okd_id=okd_id, auth_token=auth_token
-                    )
+                    f"jobid=$(dx run project-ByfFPz00jy1fk6PjpZ95F27J:/Apps/fastqc_v1.4.0 --priority high -y "
+                    f"--name {sample_name} -ireads={provided_fastq_folder_name}:/{fastq_folder_name}_{okd_id}/Data/Intensities/BaseCalls/{r1_file} "
+                    f"-ireads={provided_fastq_folder_name}:/{fastq_folder_name}_{okd_id}/Data/Intensities/BaseCalls/{r2_file} "
+                    f"--dest={provided_fastq_folder_name}:/ --brief --auth-token {auth_token})\n"
                 )
                 script_file.write("depends_list=\"${depends_list} -d ${jobid} \"\n")
         
         # Write the MultiQC command
         script_file.write(
-            "jobid=$(dx run project-ByfFPz00jy1fk6PjpZ95F27J:/Apps/multiqc_v1.18.0 --priority high -y "
-            "--instance-type mem1_ssd1_v2_x4 -iproject_for_multiqc={provided_fastq_folder_name} "
-            "-icoverage_level=100 --project={project_id} $depends_list --brief --auth-token {auth_token})\n".format(
-                provided_fastq_folder_name=provided_fastq_folder_name, project_id=project_id, auth_token=auth_token
-            )
+            f"jobid=$(dx run project-ByfFPz00jy1fk6PjpZ95F27J:/Apps/multiqc_v1.18.0 --priority high -y "
+            f"--instance-type mem1_ssd1_v2_x4 -iproject_for_multiqc={provided_fastq_folder_name} "
+            f"-icoverage_level=100 --project={project_id} $depends_list --brief --auth-token {auth_token})\n"
         )
         script_file.write("depends_list=\"${depends_list} -d ${jobid} \"\n")
         
         # Write the upload_multiqc command
         script_file.write(
-            "jobid=$(dx run project-ByfFPz00jy1fk6PjpZ95F27J:/Apps/upload_multiqc_v1.4.0 --priority high -y "
-            "--instance-type mem1_ssd1_v2_x2 -imultiqc_html=$jobid:multiqc_report -imultiqc_data_input=$jobid:multiqc "
-            "-imultiqc_data_input={provided_fastq_folder_name}:/{fastq_folder_name}_{okd_id}/{fastq_folder_name}.illumina_lane_metrics "
-            "--project={project_id} $depends_list --brief --auth-token {auth_token})\n".format(
-                provided_fastq_folder_name=provided_fastq_folder_name, fastq_folder_name=fastq_folder_name, okd_id=okd_id, project_id=project_id, auth_token=auth_token
-            )
+            f"jobid=$(dx run project-ByfFPz00jy1fk6PjpZ95F27J:/Apps/upload_multiqc_v1.4.0 --priority high -y "
+            f"--instance-type mem1_ssd1_v2_x2 -imultiqc_html=$jobid:multiqc_report -imultiqc_data_input=$jobid:multiqc "
+            f"-imultiqc_data_input={provided_fastq_folder_name}:/{fastq_folder_name}_{okd_id}/{fastq_folder_name}.illumina_lane_metrics "
+            f"--project={project_id} $depends_list --brief --auth-token {auth_token})\n"
         )
 
-    print("Shell script generated successfully: {}".format(script_filename))
+    print(f"Shell script generated successfully: {script_filename}")
 
 def main():
     # Parse command line arguments
@@ -121,7 +115,7 @@ def main():
     fastq_folder_name = os.path.basename(os.path.normpath(os.path.join(fastq_dir, "..", "..", "..")))
     
     # Create the provided fastq folder name
-    provided_fastq_folder_name = "003_{}_{}".format(fastq_folder_name, okd_id)
+    provided_fastq_folder_name = f"003_{fastq_folder_name}_{okd_id}"
     
     # Get the list of fastq files
     fastq_files = get_fastq_files(fastq_dir)
