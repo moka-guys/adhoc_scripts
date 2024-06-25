@@ -13,6 +13,7 @@ Usage:
 Arguments:
     -p, --project    The DNAnexus project ID for the run.
     -f, --fastq_dir  The name of the run folder (i.e., 240521_A01229_0331_AHWGJGDRX3).
+    -a, --auth_token_file  The path to the file containing the DNAnexus authentication token.
 
 Output:
     Generates a shell script with commands to run FastQC and MultiQC on OKD fastq files.
@@ -27,6 +28,7 @@ def parse_arguments():
     parser = argparse.ArgumentParser(description="Generate a shell script for running FastQC and MultiQC on OKD fastq files.")
     parser.add_argument("-p", "--project", required=True, help="The DNAnexus project ID for the run.")
     parser.add_argument("-f", "--fastq_dir", required=True, help="The name of the run folder (i.e., 240521_A01229_0331_AHWGJGDRX3).")
+    parser.add_argument("-a", "--auth_token_file", required=True, help="The path to the file containing the DNAnexus authentication token.")
     return parser.parse_args()
 
 def get_fastq_dir(fastq_dir):
@@ -124,7 +126,7 @@ def main():
     sorted_fastq_files = sort_fastq_files(fastq_files)
     
     # Read the DNAnexus auth token from file
-    auth_token = read_auth_token("/usr/local/src/mokaguys/.dnanexus_auth_token")
+    auth_token = read_auth_token(args.auth_token_file)
     
     # Generate the shell script with FastQC and MultiQC commands
     generate_script(fastq_folder_name, okd_id, provided_fastq_folder_name, sorted_fastq_files, args.project, auth_token)
