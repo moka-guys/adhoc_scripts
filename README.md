@@ -87,20 +87,21 @@ Spotcheck of output CSV to ensure both:
 - Results and confidence scores are reflected on the live PanelApp website
 - All results pertain to signed-off panels
 
-## okd_qc_commands.py
+## qc_command_generation.py
 
-Automates the generation of DNAnexus MultiQC/FastQC commands for a given OncoDeep runfolder.
-Must be ran on workstation where authkey file is present.
+Automates the generation of DNAnexus MultiQC/FastQC commands.
 Requires use of Python 3.6+. Can use 'conda activate' where this isn't natively available.
 
 ### Usage:
 ```
-python3 okd_qc_commands.py -p {dnanexus_project_id} -f {illumina_runfolder_name} -a {path/to/.authkey}
+python3 qc_command_generation.py -p {dnanexus_project_id} -f {illumina_runfolder_name} -a {path/to/.authkey}
 ```
 ### Arguments:
--p, --project    The DNAnexus project ID for the run (i.e, project-XXXXXXXXXXX).
--f, --fastq_dir  The name of the run folder (i.e., 240521_A01229_0331_AHWGJGDRX3).
--a, --auth_token_file  The path to the file containing the DNAnexus authentication token.
+```
+    -p, --project_id        The DNAnexus project ID for the run.
+    -r, --runfolder_name    The name of the run folder (e.g., 240521_A01229_0331_AHWGJGDRX3)
+    -a, --auth_token        Authentication token string
+```
 
 ### Output:
 Shell script file within the current working directory named according to the run.

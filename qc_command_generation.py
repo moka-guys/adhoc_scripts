@@ -7,7 +7,7 @@ Author: Bioinformatics @ Synnovis (Guy's & St. Thomas' NHS Foundation Trust)
 This script automates the generation of DNAnexus MultiQC/FastQC commands for any runfolder
 
 Usage:
-    python3 qcgen.py -p {dnanexus_project_id} -f {illumina_runfolder_name}
+    python3 qc_command_generation.py -p {dnanexus_project_id} -f {illumina_runfolder_name}
 
 Arguments:
     -p, --project_id        The DNAnexus project ID for the run.
@@ -17,9 +17,7 @@ Output:
     Generates a shell script with commands to run FastQC and MultiQC on OKD fastq files.
 """
 
-import os
 import argparse
-import re
 import subprocess
 
 
